@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_padding">16dp</dimen>
+    <dimen name="linear_width">0dp</dimen>
+    <dimen name="padding_left">4dp</dimen>
+    <dimen name="relative_height">0dp</dimen>
+    <dimen name="edit_text_padding">12dp</dimen>
+    <dimen name="linear_margin_top">16dp</dimen>
+    <dimen name="category_padding">16dp</dimen>
+    <dimen name="category_width">0dp</dimen>
+    <dimen name="editor_unit_padding">10dp</dimen>
+</resources>

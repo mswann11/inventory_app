@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_padding"
+    tools:context=".EditorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/product" />
+
+        <LinearLayout
+            android:layout_width="@dimen/linear_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_left">
+
+            <EditText
+                android:id="@+id/edit_product_name"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_title"
+                android:inputType="textCapWords" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/relative_height"
+                android:layout_weight="2">
+
+                <TextView
+                    style="@style/EditorUnitsStyle"
+                    android:text="@string/dollars" />
+
+                <EditText
+                    android:id="@+id/edit_price"
+                    style="@style/EditorFieldStyle"
+                    android:hint="@string/hint_price"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="@dimen/edit_text_padding" />
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/edit_quantity"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_quantity"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/linear_margin_top"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/supplier" />
+
+        <LinearLayout
+            android:layout_width="@dimen/linear_width"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_left">
+
+            <EditText
+                android:id="@+id/edit_supplier_name"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_name"
+                android:inputType="textCapWords" />
+
+            <EditText
+                android:id="@+id/edit_supplier_phone"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_phone"
+                android:inputType="phone" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
