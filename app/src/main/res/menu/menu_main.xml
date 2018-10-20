@@ -5,6 +5,12 @@
     tools:context=".MainActivity">
 
     <item
+        android:id="@+id/action_insert_product"
+        android:icon="@drawable/add_white"
+        android:title="@string/insert_menu_item"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/action_insert_dummy_data"
         android:title="@string/action_insert_dummy_data"
         app:showAsAction="never" />

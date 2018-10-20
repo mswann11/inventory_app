@@ -4,16 +4,13 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class ProductContract {
-
-    private ProductContract() {}
 
     public static final String CONTENT_AUTHORITY = "com.example.android.inventory";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final String PATH_PRODUCTS = "products";
+    private ProductContract() {
+    }
 
     public static abstract class ProductEntry implements BaseColumns {
 
@@ -31,12 +28,5 @@ public class ProductContract {
         public static final String COLUMN_QUANTITY = "quantity";
         public static final String COLUMN_SUPPLIER_NAME = "supplier_name";
         public static final String COLUMN_SUPPLIER_PHONE = "supplier_phone";
-
-        public static boolean isValidPhone(String phone){
-            String PHONE_PATTERN = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$";
-            Pattern pattern = Pattern.compile(PHONE_PATTERN);
-            Matcher matcher = pattern.matcher(phone);
-            return matcher.matches();
-        }
     }
 }

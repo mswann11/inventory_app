@@ -14,10 +14,10 @@ public class ProductDbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + ProductEntry.TABLE_NAME + " (" +
                     ProductEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     ProductEntry.COLUMN_PRODUCT_NAME + " TEXT NOT NULL, " +
-                    ProductEntry.COLUMN_PRICE + " INTEGER, " +
-                    ProductEntry.COLUMN_QUANTITY + " INTEGER, " +
-                    ProductEntry.COLUMN_SUPPLIER_NAME + " TEXT, " +
-                    ProductEntry.COLUMN_SUPPLIER_PHONE + " TEXT)";
+                    ProductEntry.COLUMN_PRICE + " INTEGER NOT NULL, " +
+                    ProductEntry.COLUMN_QUANTITY + " INTEGER NOT NULL DEFAULT 0, " +
+                    ProductEntry.COLUMN_SUPPLIER_NAME + " TEXT NOT NULL, " +
+                    ProductEntry.COLUMN_SUPPLIER_PHONE + " TEXT NOT NULL)";
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + ProductEntry.TABLE_NAME;
 

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -21,10 +20,12 @@ import android.widget.ListView;
 
 import com.example.android.inventory.data.ProductContract.ProductEntry;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int PRODUCT_LOADER = 0;
     ProductCursorAdapter mCursorAdapter;
+    ListView listView;
+    View emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        ListView listView = (ListView) findViewById(R.id.list_view);
-        View emptyView = findViewById(R.id.empty_view);
+        listView = findViewById(R.id.list_view);
+        emptyView = findViewById(R.id.empty_view);
         listView.setEmptyView(emptyView);
 
         mCursorAdapter = new ProductCursorAdapter(this, null);
@@ -68,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.action_insert_product:
+                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+                startActivity(intent);
+                return true;
+
             case R.id.action_insert_dummy_data:
                 insertProduct();
                 return true;
@@ -90,9 +96,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         getContentResolver().insert(ProductEntry.CONTENT_URI, values);
     }
 
-    private void deleteAllProducts(){
+    private void deleteAllProducts() {
         int rowsDeleted = getContentResolver().delete(ProductEntry.CONTENT_URI, null, null);
     }
+
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String[] projection = {
@@ -114,6 +121,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(@NonNull Loader<Cursor> loader, Cursor data) {
         mCursorAdapter.swapCursor(data);
+        if (mCursorAdapter.isEmpty()) {
+            invalidateOptionsMenu();
+        }
     }
 
     @Override

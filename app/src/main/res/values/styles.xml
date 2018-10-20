@@ -10,24 +10,43 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">@dimen/category_width</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:paddingTop">@dimen/category_padding</item>
-        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/primaryText</item>
         <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 
     <style name="EditorFieldStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">@color/primaryText</item>
+        <item name="android:textColorHint">@color/secondaryText</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:paddingHorizontal">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+    <style name="TextViewFieldStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:paddingHorizontal">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
     </style>
 
     <style name="EditorUnitsStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_alignParentLeft">true</item>
-        <item name="android:paddingTop">@dimen/editor_unit_padding</item>
+        <item name="android:paddingTop">@dimen/editor_unit_padding_top</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
 

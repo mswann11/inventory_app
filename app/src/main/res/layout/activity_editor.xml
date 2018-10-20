@@ -10,7 +10,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/category_padding">
 
         <TextView
             style="@style/CategoryStyle"
@@ -19,9 +20,26 @@
         <LinearLayout
             android:layout_width="@dimen/linear_width"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/padding_left">
+            android:paddingLeft="@dimen/padding_left"
+            android:paddingStart="@dimen/padding_left">
+
+            <TextView
+                android:id="@+id/require_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/editor_margin"
+                android:layout_marginStart="@dimen/editor_margin"
+                android:text="@string/title_required_error"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/text_view_product_name"
+                style="@style/TextViewFieldStyle"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edit_product_name"
@@ -35,23 +53,154 @@
                 android:layout_weight="2">
 
                 <TextView
+                    android:id="@+id/require_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/editor_margin"
+                    android:layout_marginStart="@dimen/editor_margin"
+                    android:text="@string/price_required_error"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                    android:textColor="@android:color/holo_red_light"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/editor_unit"
                     style="@style/EditorUnitsStyle"
+                    android:layout_below="@id/require_price"
+                    android:layout_marginLeft="@dimen/editor_margin"
+                    android:layout_marginStart="@dimen/editor_margin"
                     android:text="@string/dollars" />
+
+                <TextView
+                    android:id="@+id/text_view_price"
+                    style="@style/TextViewFieldStyle"
+                    android:layout_below="@id/require_price"
+                    android:layout_marginLeft="@dimen/editor_margin"
+                    android:layout_marginStart="@dimen/editor_margin"
+                    android:visibility="gone" />
 
                 <EditText
                     android:id="@+id/edit_price"
                     style="@style/EditorFieldStyle"
+                    android:layout_below="@id/require_price"
+                    android:layout_marginLeft="@dimen/edit_price_margin"
+                    android:layout_marginStart="@dimen/edit_price_margin"
+                    android:layout_toEndOf="@id/editor_unit"
+                    android:layout_toRightOf="@id/editor_unit"
                     android:hint="@string/hint_price"
-                    android:inputType="numberDecimal"
-                    android:paddingLeft="@dimen/edit_text_padding" />
+                    android:inputType="numberDecimal" />
 
             </RelativeLayout>
 
-            <EditText
-                android:id="@+id/edit_quantity"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/hint_quantity"
-                android:inputType="number" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/quantity_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/editor_margin"
+                    android:layout_marginStart="@dimen/editor_margin"
+                    android:text="@string/label_quantity" />
+
+                <TextView
+                    android:id="@+id/minus_button_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/quantity_label"
+                    android:layout_marginLeft="@dimen/editor_margin"
+                    android:layout_marginStart="@dimen/editor_margin"
+                    android:layout_marginTop="@dimen/minus_button_margin"
+                    android:background="@drawable/minus_button_background"
+                    android:elevation="@dimen/minus_button_elevation"
+                    android:paddingBottom="@dimen/minus_button_padding_bottom"
+                    android:paddingHorizontal="@dimen/editor_margin"
+                    android:paddingTop="@dimen/minus_button_padding_top"
+                    android:text="@string/minus"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/quantity_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_view_quantity"
+                        style="@style/TextViewFieldStyle"
+                        android:layout_marginRight="@dimen/detail_text_view_margin"
+                        android:layout_below="@id/quantity_label"
+                        android:text="@string/in_stock"/>
+
+                    <TextView
+                        android:id="@+id/minus_button_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/minus_button_background"
+                        android:elevation="@dimen/minus_button_elevation"
+                        android:paddingHorizontal="@dimen/detail_minus_button_padding"
+                        android:layout_margin="@dimen/detail_minus_button_margin"
+                        android:text="@string/minus"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_view_quantity_value"
+                        style="@style/TextViewFieldStyle"
+                        android:layout_marginLeft="@dimen/detail_text_view_margin"
+                        android:layout_marginRight="@dimen/detail_text_view_margin"
+                        android:layout_below="@id/quantity_label" />
+
+                    <TextView
+                        android:id="@+id/plus_button_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/plus_button_background"
+                        android:elevation="@dimen/minus_button_elevation"
+                        android:paddingHorizontal="@dimen/detail_plus_button_padding"
+                        android:layout_margin="@dimen/detail_minus_button_margin"
+                        android:text="@string/plus"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@android:color/white"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edit_quantity"
+                    style="@style/EditorFieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_below="@id/quantity_label"
+                    android:layout_marginTop="@dimen/edit_quantity_margin"
+                    android:layout_toEndOf="@id/minus_button_edit"
+                    android:layout_toRightOf="@id/minus_button_edit"
+                    android:hint="@string/hint_quantity"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/plus_button_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/quantity_label"
+                    android:layout_marginTop="@dimen/minus_button_margin"
+                    android:layout_toEndOf="@id/edit_quantity"
+                    android:layout_toRightOf="@id/edit_quantity"
+                    android:background="@drawable/plus_button_background"
+                    android:elevation="@dimen/minus_button_elevation"
+                    android:paddingBottom="@dimen/minus_button_padding_bottom"
+                    android:paddingHorizontal="@dimen/plus_padding"
+                    android:paddingTop="@dimen/minus_button_padding_top"
+                    android:text="@string/plus"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -60,8 +209,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/linear_margin_top"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/category_padding">
 
         <TextView
             style="@style/CategoryStyle"
@@ -70,9 +219,26 @@
         <LinearLayout
             android:layout_width="@dimen/linear_width"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/padding_left">
+            android:paddingLeft="@dimen/padding_left"
+            android:paddingStart="@dimen/padding_left">
+
+            <TextView
+                android:id="@+id/require_supplier_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/editor_margin"
+                android:layout_marginStart="@dimen/editor_margin"
+                android:text="@string/supplier_name_required_error"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/text_view_supplier_name"
+                style="@style/TextViewFieldStyle"
+                android:visibility="gone" />
 
             <EditText
                 android:id="@+id/edit_supplier_name"
@@ -80,11 +246,44 @@
                 android:hint="@string/hint_name"
                 android:inputType="textCapWords" />
 
+            <TextView
+                android:id="@+id/require_supplier_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/editor_margin"
+                android:layout_marginStart="@dimen/editor_margin"
+                android:text="@string/supplier_phone_required_error"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/text_view_supplier_phone"
+                style="@style/TextViewFieldStyle"
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/edit_supplier_phone"
                 style="@style/EditorFieldStyle"
                 android:hint="@string/hint_phone"
                 android:inputType="phone" />
+
+            <TextView
+                android:id="@+id/call_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/call_button_margin"
+                android:background="@drawable/call_button_background"
+                android:drawableLeft="@drawable/ic_local_phone"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableStart="@drawable/ic_local_phone"
+                android:paddingHorizontal="@dimen/call_button_padding_horizontal"
+                android:paddingVertical="@dimen/call_button_padding_vertical"
+                android:text="@string/contact_supplier"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:visibility="visible" />
 
         </LinearLayout>
 
